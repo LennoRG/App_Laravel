@@ -5,8 +5,11 @@
 
 @section('contect')
     <h1>@lang('Projects')</h1>
-
-    <a href="{{route('projects.create')}}"> Crear Proyecto </a>
+    
+    @auth
+         <a href="{{route('projects.create')}}"> Crear Proyecto </a>
+        
+    @endauth
 
     <ul>
         @forelse($projects as $project)

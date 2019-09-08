@@ -16,5 +16,9 @@ Route::get('/portafolio/{project}', 'ProjectController@show')->name('projects.sh
 Route::delete('/portafolio/{project}', 'ProjectController@destroy')->name('projects.destroy');
 
 Route::view('/contact', 'contact')->name('contact');
-Route::post('contact', 'MessagesController@store')->name('messages.store');
+Route::post('contact', 'MessageController@store')->name('messages.store');
 
+
+Auth::routes(['register' => false]); //['register' => false] sirve para desavilitar el registro
+
+//Route::get('/home', 'HomeController@index')->name('home');

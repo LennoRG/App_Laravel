@@ -13,7 +13,13 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+     public function __construct()
+     {
+         $this->middleware('auth')->except('index', 'show');  //ruta de protecion de proyectos auth viene del kernel.app
+     }
+
+     public function index()
     {
         $projects = Project::latest()->paginate();
         //Project::latest('updated_at')->get(); Por fecha de actualizacion
@@ -50,7 +56,7 @@ class ProjectController extends Controller
             'description' => request('description')
         ]);*/
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'El proyecto fue creado con exito');
     }
 
     public function edit(Project $project)
@@ -65,14 +71,16 @@ class ProjectController extends Controller
     {
         $project->update($request->validated());
 
-        return redirect()->route('projects.show', $project);
+        return redirect()->route('projects.show', $project)->with('status', 'El proyecto fue actualizado con exito');
+    
     }
    
     public function destroy(Project $project)
     {
         $project->delete();
          
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'El proyecto fue eliminado con exito');
+    
         
     }
 }

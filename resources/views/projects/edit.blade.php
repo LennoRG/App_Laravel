@@ -7,7 +7,7 @@
     <h1>Editar proyecto</h1>
 
     @include('partials.validation-errors')
-
+    
     <form method="POST" action="{{ route('projects.update', $project) }}">
         @csrf 
         

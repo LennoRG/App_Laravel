@@ -7,6 +7,10 @@
 @section('contect')
     <h1>{{  __('Contact') }}</h1>
 
+
+    @include('partials.session-status')
+
+
     <form method="POST" action="{{route('messages.store')}}">
         @csrf  <!-- Siempre poner esta directiva en los fomularios-->
 

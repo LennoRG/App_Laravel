@@ -2,20 +2,17 @@
 <html lang="en">
 <head>
     <title>@yield('title', 'App Laravel ERG')</title>
-
-    <style >
-        .active a{
-            color: red;
-            text-decoration:  none;
-
-        }
     
-    </style>
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <script src="/js/app.js" defer></script>
+
 </head>
 <body>
    
-    @include('partials/nav')
-   @yield('contect')
+     @include('partials/nav')
+     @include('partials.session-status')
+     @yield('contect')
 
 
   </body>

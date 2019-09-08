@@ -20,7 +20,7 @@ class MessageController extends Controller
       Mail::to('lenorg24@gmail.com')->queue(new MensajeRecibido($message));
 
       
-      return 'Mensaje Enviado';
+      return back()->with('status', 'Recibimos tu mensaje, te responderemos en menos de 24 horas.');
     
   }
 
